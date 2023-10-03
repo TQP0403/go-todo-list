@@ -1,4 +1,4 @@
-module todo-list
+module github.com/TQP0403/go-todo-list
 
 go 1.21.1
 

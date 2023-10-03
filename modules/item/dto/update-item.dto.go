@@ -1,7 +1,7 @@
 package dto
 
 import (
-	"todo-list/modules/item/model"
+	"github.com/TQP0403/go-todo-list/modules/item/model"
 )
 
 type UpdateTodoItemDto struct {

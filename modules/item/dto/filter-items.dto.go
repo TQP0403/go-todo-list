@@ -1,6 +1,6 @@
 package dto
 
-import "todo-list/modules/item/model"
+import "github.com/TQP0403/go-todo-list/modules/item/model"
 
 type FilterItemDto struct {
 	Status *model.ItemStatus `json:"status" form:"status"`

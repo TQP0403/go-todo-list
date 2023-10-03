@@ -2,13 +2,13 @@ package main
 
 import (
 	"fmt"
+	"github.com/TQP0403/go-todo-list/db"
+	"github.com/TQP0403/go-todo-list/modules/item"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"log"
 	"net/http"
 	"os"
-	"todo-list/db"
-	"todo-list/modules/item"
 )
 
 func main() {

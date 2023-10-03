@@ -1,6 +1,6 @@
 package storage
 
-import "todo-list/modules/item/dto"
+import "github.com/TQP0403/go-todo-list/modules/item/dto"
 
 type UpdateStorage interface {
 	UpdateItem(id int, data *dto.UpdateTodoItemDto) error

@@ -1,6 +1,6 @@
 package storage
 
-import "todo-list/modules/item/dto"
+import "github.com/TQP0403/go-todo-list/modules/item/dto"
 
 type CreateItemStorage interface {
 	CreateItem(data *dto.CreateTodoItemDto) error

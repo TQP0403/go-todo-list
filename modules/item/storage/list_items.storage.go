@@ -1,9 +1,9 @@
 package storage
 
 import (
-	"todo-list/modules/common"
-	"todo-list/modules/item/dto"
-	"todo-list/modules/item/model"
+	"github.com/TQP0403/go-todo-list/modules/common"
+	"github.com/TQP0403/go-todo-list/modules/item/dto"
+	"github.com/TQP0403/go-todo-list/modules/item/model"
 )
 
 type ListItemStorage interface {

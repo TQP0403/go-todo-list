@@ -2,9 +2,9 @@ package storage
 
 import (
 	"errors"
+	"github.com/TQP0403/go-todo-list/modules/common"
+	"github.com/TQP0403/go-todo-list/modules/item/model"
 	"gorm.io/gorm"
-	"todo-list/modules/common"
-	"todo-list/modules/item/model"
 )
 
 type GetItemStorage interface {

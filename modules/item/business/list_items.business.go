@@ -2,10 +2,10 @@ package business
 
 import (
 	"context"
-	"todo-list/modules/common"
-	"todo-list/modules/item/dto"
-	"todo-list/modules/item/model"
-	"todo-list/modules/item/storage"
+	"github.com/TQP0403/go-todo-list/modules/common"
+	"github.com/TQP0403/go-todo-list/modules/item/dto"
+	"github.com/TQP0403/go-todo-list/modules/item/model"
+	"github.com/TQP0403/go-todo-list/modules/item/storage"
 )
 
 type ListItemsBusiness struct {
