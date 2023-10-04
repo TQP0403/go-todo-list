@@ -1,29 +1,42 @@
 version: '3.0'
 
 services:
-  db:
-    image: mysql:latest
+  postgres:
+    image: postgres:latest
+    restart: always
     ports:
-      - "3306:3306"
+      - '5432:5432'
+    command:
+      [
+        "postgres",
+        "-cshared_preload_libraries=pg_stat_statements",
+        "-cmax_connections=200"
+      ]
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 1s
+      timeout: 5s
+      retries: 10
     environment:
-      MYSQL_ROOT_PASSWORD: my-secret-pw
-      MYSQL_DATABASE: todo_list
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret-pw
+      POSTGRES_DB: todo_list
+      PGDATA: "/var/lib/postgresql/data"
+      POSTGRES_INITDB_ARGS: "-E UTF8 --locale=C"
     volumes:
-      - ./data/mysql:/var/lib/mysql
-  app:
-    build:
-      context: .
-    image: go-todo-list:latest
-    depends_on:
-      - db
-    environment:
-      DB_USER: root
-      DB_PASSWORD: my-secret-pw
-      DB_NAME: todo_list
-      DB_PORT: 3306
-      DB_HOST: db
-    links:
-      - "db:localhost"
-    ports:
-      - "8080:8080"
-
+      - ./data/postgres:/var/lib/postgresql/data
+#  app:
+#    build:
+#      context: .
+#    image: go-todo-list:latest
+#    depends_on:
+#      postgres:
+#        condition: service_healthy
+#    environment:
+#      DB_USER: admin
+#      DB_PASSWORD: secret-pw
+#      DB_NAME: todo_list
+#      DB_PORT: 5432
+#      DB_HOST: postgres
+#    ports:
+#      - "8080:8080"

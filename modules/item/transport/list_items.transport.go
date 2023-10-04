@@ -1,7 +1,6 @@
 package transport
 
 import (
-	"fmt"
 	"github.com/TQP0403/go-todo-list/modules/common"
 	"github.com/TQP0403/go-todo-list/modules/item/business"
 	"github.com/TQP0403/go-todo-list/modules/item/dto"
@@ -32,8 +31,6 @@ func (t *Transport) HandleListItems() func(ctx *gin.Context) {
 		}
 
 		paging.Validate()
-
-		fmt.Println(filter.Status)
 
 		store := storage.NewSqlStore(t.db)
 		b := business.NewListItemsBusiness(store)

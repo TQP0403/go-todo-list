@@ -5,19 +5,11 @@ import (
 	"github.com/TQP0403/go-todo-list/db"
 	"github.com/TQP0403/go-todo-list/modules/item"
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
-	"log"
 	"net/http"
 	"os"
 )
 
 func main() {
-	err := godotenv.Load(".env")
-
-	if err != nil {
-		log.Println(".env file not found")
-	}
-
 	myDb := db.GetDB()
 
 	app := gin.Default()

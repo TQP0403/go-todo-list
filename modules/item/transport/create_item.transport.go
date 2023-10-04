@@ -32,6 +32,6 @@ func (t *Transport) HandleCreateItem() func(ctx *gin.Context) {
 			return
 		}
 
-		ctx.JSON(http.StatusOK, common.GetResponseSuccess(data.Id, nil))
+		ctx.JSON(http.StatusCreated, common.GetResponseSuccess(data.Id, nil))
 	}
 }
