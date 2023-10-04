@@ -2,19 +2,21 @@
 FROM ubuntu:22.04
 FROM golang:1.21.1-alpine
 
-# Download Go modules
-COPY go.mod go.sum ./
+WORKDIR /app
+COPY . .
 
-RUN go mod download
+# Installs Go dependencies
+ENV GO111MODULE=on
 
 RUN apk update && apk add --no-cache 'git=~2'
 
-# Copy the source code. Note the slash at the end, as explained in
-# https://docs.docker.com/engine/reference/builder/#copy
+RUN go get -d -v
+# RUN go mod download
+
 COPY *.go ./
 
 # Build
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /go/main .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /godocker
 
 # Optional:
 # To bind to a TCP port, runtime parameters must be supplied to the docker command.
@@ -26,4 +28,4 @@ ENV GIN_MODE release
 EXPOSE 8080
 
 # Run
-CMD ["/go/main"]
+CMD ["/godocker"]

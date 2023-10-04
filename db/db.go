@@ -12,10 +12,10 @@ func GetDB() *gorm.DB {
 	password := os.Getenv("DB_PASSWORD")
 	host := os.Getenv("DB_HOST")
 	port := os.Getenv("DB_PORT")
-	schema := os.Getenv("DB_SCHEMA")
+	name := os.Getenv("DB_NAME")
 	connStr, ok := os.LookupEnv("DB_CONNECTION")
 
-	connectionStr := fmt.Sprintf("%v:%v@tcp(%v:%v)/%v?charset=utf8mb4&parseTime=True&loc=Local", user, password, host, port, schema)
+	connectionStr := fmt.Sprintf("%v:%v@tcp(%v:%v)/%v?charset=utf8mb4&parseTime=True&loc=Local", user, password, host, port, name)
 
 	if ok {
 		connectionStr = connStr
